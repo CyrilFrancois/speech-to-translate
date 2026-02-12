@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  # --- Backend ---
+  backend:
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: polyvoice_backend
+    environment:
+      - ENV_FILE=.env
+    volumes:
+      - ./backend/uploads:/app/uploads
+    ports:
+      - "8000:8000"
+    restart: always
+    networks:
+      - polyvoice_network
+
+  # --- Frontend ---
+  frontend:
+    build: 
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: polyvoice_frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: always
+    networks:
+      - polyvoice_network
+
+networks:
+  polyvoice_network:
+    driver: bridge

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speech to Translate | Batch Translation REX</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes pulse-red {
+            0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(239, 68, 68, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+        }
+        .recording { animation: pulse-red 2s infinite; background-color: #7f1d1d !important; border-color: #ef4444 !important; }
+        .glass-panel {
+            background: rgba(31, 41, 55, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(75, 85, 99, 0.3);
+        }
+        .spinner {
+            border-top-color: #3B82F6;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen font-sans">
+
+    <header class="border-b border-slate-800 p-4">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="w-3 h-3 bg-blue-500 rounded-full"></div>
+                <h1 class="text-xl font-bold tracking-tight">SPEECH<span class="text-blue-500"> 2 </span>TRANSLATE</h1>
+            </div>
+            <div id="statusBadge" class="flex items-center space-x-4 text-sm">
+                <span class="text-slate-400">Status:</span>
+                <span class="flex items-center"><span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>Backend Connected</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto p-6 lg:p-12">
+        <div class="grid lg:grid-cols-3 gap-8">
+            
+            <div class="lg:col-span-1 space-y-6">
+                <div class="glass-panel p-6 rounded-2xl">
+                    <h2 class="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">Audio Input</h2>
+                    
+                    <button id="recordBtn" class="w-full py-4 rounded-xl bg-slate-800 border border-slate-700 hover:bg-slate-700 transition-all flex flex-col items-center justify-center space-y-2 mb-4">
+                        <div id="recordIcon" class="w-4 h-4 bg-red-500 rounded-full"></div>
+                        <span id="recordText" class="font-medium">Start Recording</span>
+                    </button>
+
+                    <div class="relative flex items-center py-2">
+                        <div class="flex-grow border-t border-slate-700"></div>
+                        <span class="flex-shrink mx-4 text-xs text-slate-500 italic">OR</span>
+                        <div class="flex-grow border-t border-slate-700"></div>
+                    </div>
+
+                    <input type="file" id="audioFile" class="hidden" accept="audio/*">
+                    <label for="audioFile" class="w-full py-3 block text-center rounded-xl border border-dashed border-slate-600 hover:border-blue-500 cursor-pointer text-slate-400 text-sm transition-colors">
+                        Select Audio File
+                    </label>
+                </div>
+
+                <div class="glass-panel p-6 rounded-2xl">
+                    <h2 class="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">Settings</h2>
+                    <label class="block text-xs text-slate-500 mb-1">Target Language</label>
+                    <select id="targetLang" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2 focus:ring-2 focus:ring-blue-500 outline-none">
+                        <option value="fr">French</option>
+                        <option value="en">English</option>
+                        <option value="es">Spanish</option>
+                        <option value="de">German</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="lg:col-span-2 space-y-6">
+                <div id="loader" class="hidden glass-panel p-8 rounded-2xl flex flex-col items-center justify-center space-y-4">
+                    <div class="w-12 h-12 border-4 border-slate-700 border-t-blue-500 rounded-full spinner"></div>
+                    <p class="text-blue-400 animate-pulse font-medium">AI is translating...</p>
+                </div>
+
+                <div id="results" class="space-y-4">
+                    <div class="glass-panel p-6 rounded-2xl relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-1 h-full bg-slate-500"></div>
+                        <div class="flex justify-between mb-2">
+                            <span class="text-xs font-bold text-slate-500 uppercase">Original Transcription</span>
+                        </div>
+                        <p id="transcriptionOutput" class="text-slate-300 italic leading-relaxed">Wait for audio...</p>
+                    </div>
+
+                    <div class="glass-panel p-6 rounded-2xl border-l-4 border-blue-500 bg-blue-500/5">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-xs font-bold text-blue-400 uppercase">AI Translation</span>
+                        </div>
+                        <p id="translationOutput" class="text-xl font-medium text-white leading-relaxed">...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
