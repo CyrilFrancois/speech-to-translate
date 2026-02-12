@@ -3,6 +3,10 @@
 ### **Project Vision**
 Speech2Translate is a high-performance translation bridge designed for real-time customer service environments. This repository serves as a **Technical Showcase** of a "Cascaded" AI pipeline, demonstrating that high-accuracy, private translation is achievable through localized models.
 
+<p align="center">
+  <img src="screenshot.png" alt="Speech2Translate UI Screenshot" width="800">
+</p>
+
 ---
 
 ## Showcase Scope & Experience
