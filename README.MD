@@ -1,7 +1,7 @@
-# SpeechToTranslate | AI Multilingual Showcase
+# Speech2Translate | AI Multilingual Showcase
 
 ### **Project Vision**
-SpeechToTranslate is a high-performance **Speech-to-Speech (S2S)** translation bridge designed for real-time customer service environments. This repository serves as a **Technical Showcase** of a "Cascaded" AI pipeline, demonstrating that high-accuracy, private translation is achievable through localized SOTA models.
+Speech2Translate is a high-performance translation bridge designed for real-time customer service environments. This repository serves as a **Technical Showcase** of a "Cascaded" AI pipeline, demonstrating that high-accuracy, private translation is achievable through localized models.
 
 ---
 
@@ -27,34 +27,6 @@ The system is orchestrated via Docker to ensure environment parity between devel
 * **`/frontend`**:
     * `index.html`: A professional "Glassmorphism" interface built with Tailwind CSS.
     * `script.js`: Handles asynchronous binary audio blobs and dynamic UI state management (loaders/results).
-
----
-
-## The 3-Week PoC Roadmap
-Moving from this "Batch" showcase to a fully "Streaming" oral discussion:
-
-### **Week 1: Streaming & VAD Integration**
-* **Goal:** Achieving a "Live" conversational feel.
-* **Technical Shift:** Transition from REST to **WebSockets**. Integrate **Silero VAD** (Voice Activity Detection) to process audio chunks while the user is still speaking.
-
-### **Week 2: Emotional TTS & Voice Synthesis**
-* **Goal:** Natural, empathetic human interaction.
-* **Technical Shift:** Integration of **Cartesia.ai** or **ElevenLabs** for ultra-low latency (<200ms) Text-to-Speech. Using **SSML** to match the translation's tone to the customer's sentiment.
-
-### **Week 3: Contextual RAG & CRM Integration**
-* **Goal:** Specialized business intelligence.
-* **Technical Shift:** Connecting the pipeline to a **Vector Database (RAG)**. This allows the AI to correctly translate company-specific product names and technical jargon from the client's internal documentation.
-
----
-
-## 🎯 Future Production Waypoints (3-Month Phase)
-To scale this PoC into a global telephony solution, we will address these enterprise requirements:
-
-| Phase | Focus | Business Value |
-| :--- | :--- | :--- |
-| **SIP Integration** | RTP Stream Interception | "Plug-in" to existing phone services without changing hardware. |
-| **Edge Compute** | GPU Acceleration | Scalability for 1,000+ concurrent calls with <500ms latency. |
-| **Compliance** | PII Redaction | Real-time masking of sensitive data (Credit Cards, Names) in the audio stream. |
 
 ---
 
