@@ -36,7 +36,5 @@ The system is orchestrated via Docker to ensure environment parity between devel
 
 ## 🚦 Getting Started
 1.  **Environment Setup:** Ensure your `.env` is configured for your local hardware (CPU/GPU).
-2.  **Deployment:** ```bash
-    docker-compose up --build
-    ```
+2.  **Deployment:** `docker-compose up --build`
 3.  **Demonstration:** Access the local dashboard at `http://localhost`.
